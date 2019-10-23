@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import gql from 'graphql-tag'
+import { useQuery } from '@apollo/react-hooks'
 
-function App() {
+const HELLO_QUERY = gql`
+  query {
+    hello
+  }
+`
+
+export default function App() {
+  const { loading, error, data } = useQuery(HELLO_QUERY)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1>GQL Lambda App</h1>
+      {loading && `Loading Hello Query...`}
+      {error && `Error: ${error.message}`}
+      {data && data.hello && `${data.hello}`}
+    </>
+  )
 }
-
-export default App;
