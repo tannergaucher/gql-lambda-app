@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-client": "^2.6.4",
     "apollo-server-lambda": "^2.9.7",
     "encoding": "^0.1.12",
     "react": "^16.10.2",
